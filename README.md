@@ -34,7 +34,13 @@ $ source .venv/bin/activate
 (.venv)$ pip install -r requirements.txt
 ```
 
-5. Execute o crawl:
+5. acesse a pasta olx:
+
+```bash
+(.venv)$ cd olx
+```
+
+6. Execute o crawl:
 
 ```bash
 (.venv)$ scrapy crawl cars

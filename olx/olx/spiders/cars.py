@@ -9,12 +9,6 @@ class CarsSpider(scrapy.Spider):
     start_urls = ['http://pe.olx.com.br/']
 
 
-    # def start_requests(self):
-    #     yield scrapy.Request('http://pe.olx.com.br/',self.parse)
-    #     # yield scrapy.Request('http://pe.olx.com.br/veiculos-e-acessorios', self.sub_categories_olx)
-        # yield scrapy.Request('http://pe.olx.com.br/veiculos-e-acessorios/carros/', self.cars_detail)
-
-
     def parse(self, response):
 
         self.log('================================= CABEÇALHO - INÍCIO ======================================')
@@ -113,34 +107,3 @@ class CarsSpider(scrapy.Spider):
             # 'zipcode': zipcode,
             # 'neighborhood': neighborhood,
         }
-
-
-    # Acessando e exibindo links respectivos a lista de items dos anúncios
-    # encontrados em veiculos-e-acessorios/carros/ que não contenham
-    # a classe lis_native(alguns anúncios do Google)
-    # def parse(self, response):
-    #     items = response.xpath(
-    #         '//ul[@id="main-ad-list"]/li[not(contains(@class, "list_native"))]'
-    #     )
-    #     self.log('================================= CABEÇALHO - INÍCIO ======================================')
-    #     self.log('VISITEI O SITE: %s' % response.url)
-    #     self.log('=============== VISUALIZANDO TODOS OS ANÚNCIOS DE CARROS  ===============')
-    #     self.log('QUANTIDADE DE ANÚNCIOS POR PÁGINA: %s'% len(items))
-    #     self.log('=================================== CABEÇALHO - FIM ========================================')
-    #     for item in items:
-    #         url = item.xpath('./a/@href').extract_first()
-    #         yield scrapy.Request(url=url, callback=self.parse_detail)
-    #
-    # def cars_detail(self, response):
-    #     title = response.xpath('//title/text()').extract_first()
-    #     years = response.xpath(
-    #         '//span[contains(text(), "Ano")]/following-sibling::strong/a/@title'
-    #     ).extract_first()
-    #     ports = response.xpath(
-    #         '//span[contains(text(), "Portas")]/following-sibling::strong/text()'
-    #     ).extract_first()
-    #     yield {
-    #         'title': title,
-    #         'years': years,
-    #         'ports': ports,
-    #     }

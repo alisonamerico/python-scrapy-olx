@@ -29,8 +29,10 @@ class CarsSpider(scrapy.Spider):
         self.log('Visualizando as categorias do site: %s' % categories)
         self.log('=================================== CABEÇALHO - FIM ========================================')
         for category in categories:
-            url = category.xpath('./a/@href').extract_first()
-            yield scrapy.Request(url="http://pe.olx.com.br/veiculos-e-acessorios", callback=self.parse_sub_categories)
+            url = category.xpath('.//a/@href').extract_first()
+            yield scrapy.Request(
+                url="http://pe.olx.com.br/veiculos-e-acessorios", callback=self.parse_sub_categories
+            )
 
     def parse_sub_categories(self, response):
         title_sub_categories = response.xpath(
@@ -43,8 +45,10 @@ class CarsSpider(scrapy.Spider):
         self.log('Visualizando as sub categorias do site: %s' % sub_categories)
         self.log('=================================== CABEÇALHO - FIM ========================================')
         for sub_category in sub_categories:
-            url = sub_category.xpath('./a/@href').extract_first()
-            yield scrapy.Request(url="http://pe.olx.com.br/veiculos-e-acessorios/carros", callback=self.parse_list_cars)
+            url = sub_category.xpath('.//a/@href').extract_first()
+            yield scrapy.Request(
+                url="http://pe.olx.com.br/veiculos-e-acessorios/carros", callback=self.parse_list_cars
+            )
 
     def parse_list_cars(self, response):
         items = response.xpath(
@@ -58,6 +62,14 @@ class CarsSpider(scrapy.Spider):
         for item in items:
             url = item.xpath('./a/@href').extract_first()
             yield scrapy.Request(url=url, callback=self.cars_detail)
+        next_page = response.xpath(
+            '//div[contains(@class, "module_pagination")]//a[@rel = "next"]/@href'
+        )
+        if next_page:
+            self.log('Próxima Página: {}'.format(next_page.extract_first()))
+            yield scrapy.Request(
+                url=next_page.extract_first(), callback=self.parse_list_cars
+            )
 
     def cars_detail(self, response):
         title = response.xpath('//title/text()').extract_first()

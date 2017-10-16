@@ -74,7 +74,7 @@ class CarsSpider(scrapy.Spider):
     def cars_detail(self, response):
         title = response.xpath('//title/text()').extract_first()
 
-        years = response.xpath(
+        year = response.xpath(
             '//span[contains(text(), "Ano")]/following-sibling::strong/a/@title'
             ).extract_first()
 

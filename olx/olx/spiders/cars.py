@@ -110,7 +110,7 @@ class CarsSpider(scrapy.Spider):
         yield {
 
             'title': title,
-            'years': years,
+            'year': year,
             'ports': ports,
             'fuel': fuel,
             'mileage': mileage,

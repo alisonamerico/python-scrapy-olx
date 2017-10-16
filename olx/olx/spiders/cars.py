@@ -42,7 +42,7 @@ class CarsSpider(scrapy.Spider):
             '//*[contains(@class, "search-subcategory-nav")]//li/a/@href'
             )
         self.log('================================= CABEÇALHO - INÍCIO ======================================')
-        self.log('Visualizando as sub categorias do site: %s' % sub_categories)
+        self.log('Visualizando as sub categorias dentro da categoria "veiculos-e-acessorios": %s' % sub_categories)
         self.log('=================================== CABEÇALHO - FIM ========================================')
         for sub_category in sub_categories:
             url = sub_category.xpath('.//a/@href').extract_first()

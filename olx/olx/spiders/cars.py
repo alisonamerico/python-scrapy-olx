@@ -65,14 +65,6 @@ class CarsSpider(scrapy.Spider):
             "//span[contains(text(), 'Município')]/following-sibling::strong/a/@title"
             ).extract_first()
 
-        # zipcode = response.xpath(
-        #     "//span[contains(text(), 'CEP')]/following-sibling::strong/text()"
-        #     ).extract_first()
-        #
-        # neighborhood = response.xpath(
-        #     "//span[contains(text(), 'Bairro')]/following-sibling::strong//text()"
-        #     ).extract_first()
-
         self.log('=============== VISUALIZANDO DETALHES DO CARRO  ===============')
         yield {
 
@@ -83,6 +75,4 @@ class CarsSpider(scrapy.Spider):
             'mileage': mileage,
             'exchange': exchange,
             'county': county,
-            # 'zipcode': zipcode,
-            # 'neighborhood': neighborhood,
         }

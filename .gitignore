@@ -1,3 +1,3 @@
-.bash_aliases
+*.bash_aliases
 *pyc
 __pycache__

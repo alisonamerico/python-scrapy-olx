@@ -46,6 +46,7 @@ $ source .venv/bin/activate
 (.venv)$ scrapy crawl cars
 ```
 
+Obs.: Caso queira ver o crawl com mais detalhe baixe a ide Studio 3T(https://studio3t.com/download/)
 
 ## Dúvidas ou problemas
 

@@ -1,5 +1,6 @@
 # python-scrapy-olx
-Projeto de scraping com python
+Projeto de scraping com python para capturar informações(detalhes) da página
+de carros(http://pe.olx.com.br/veiculos-e-acessorios/carros)
 
 ![Screenshot][1]
 

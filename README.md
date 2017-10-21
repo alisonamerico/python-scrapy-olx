@@ -4,7 +4,7 @@ de carros(http://pe.olx.com.br/veiculos-e-acessorios/carros)
 
 ![Screenshot][1]
 
-[1]:https://github.com/alisonamerico/python-scrapy-olx/blob/master/olx/olx/img/scrapy_python.jpg
+[1]:https://github.com/alisonamerico/python-scrapy-olx/blob/master/olx/olx/img/scrapy-python.jpg
 
 
 ## Instalação
